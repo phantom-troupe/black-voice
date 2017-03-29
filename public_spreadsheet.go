@@ -12,7 +12,7 @@ type PublicSpreadsheet struct {
 	lineNumberOfHeaders int
 }
 
-func (x PublicSpreadsheet) query(q string) (string, error) {
+func (x PublicSpreadsheet) query(q string) ([]map[string]string, error) {
 	res, body, err := gorequest.New().Get(
 		"https://docs.google.com/a/google.com/spreadsheets/d/" +
 		x.key +
@@ -23,11 +23,11 @@ func (x PublicSpreadsheet) query(q string) (string, error) {
 	    End()
 
 	if err != nil {
-		return "", fmt.Errorf("Failed to fetch from public spreadsheet: %s", err[0])
+		return [], fmt.Errorf("Failed to fetch from public spreadsheet: %s", err[0])
 	}
 
 	if res.StatusCode >= 400 {
-		return "", fmt.Errorf("Returned status code is %d", res.StatusCode)
+		return [], fmt.Errorf("Returned status code is %d", res.StatusCode)
 	}
 	return body, nil
 }
