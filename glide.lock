@@ -1,0 +1,14 @@
+hash: 63fbdd16cb53648481d478bb7ed3e9128db77855a520690bb1d2823a03ac6a9f
+updated: 2017-03-29T18:25:02.285159189+09:00
+imports:
+- name: github.com/moul/http2curl
+  version: 4e24498b31dba4683efb9d35c1c8a91e2eda28c8
+- name: github.com/parnurzeal/gorequest
+  version: a578a48e8d6ca8b01a3b18314c43c6716bb5f5a3
+- name: github.com/pkg/errors
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
+- name: golang.org/x/net
+  version: 1dfe7915deaf3f80b962c163b918868d8a6d8974
+  subpackages:
+  - publicsuffix
+testImports: []
