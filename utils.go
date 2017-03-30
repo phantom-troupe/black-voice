@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func csvToSpreadSheetValuesCollection(input string) (SpreadSheetValuesCollection, error) {
-	var result SpreadSheetValuesCollection
+func csvToSpreadsheetValuesCollection(input string) (SpreadsheetValuesCollection, error) {
+	var result SpreadsheetValuesCollection
 	reader := csv.NewReader(strings.NewReader(input))
 	header, err := reader.Read()
 	if err != nil {
@@ -19,7 +19,7 @@ func csvToSpreadSheetValuesCollection(input string) (SpreadSheetValuesCollection
 		if err == io.EOF {
 			break
 		}
-		spreadSheetValue := SpreadSheetValues{}
+		spreadSheetValue := SpreadsheetValues{}
 		for index, column := range header {
 			spreadSheetValue[column] = record[index]
 		}

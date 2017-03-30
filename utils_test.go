@@ -8,9 +8,9 @@ import (
 func TestCsvToSpreadSheetValuesCollection_validCsv(t *testing.T) {
 	input := `"key1","key2","key3"
 "value1","value2","value3"`
-	actual, err := csvToSpreadSheetValuesCollection(input)
-	var expected SpreadSheetValuesCollection
-	expected = append(expected, SpreadSheetValues{
+	actual, err := csvToSpreadsheetValuesCollection(input)
+	var expected SpreadsheetValuesCollection
+	expected = append(expected, SpreadsheetValues{
 		"key1": "value1",
 		"key2": "value2",
 		"key3": "value3",
@@ -25,8 +25,8 @@ func TestCsvToSpreadSheetValuesCollection_validCsv(t *testing.T) {
 
 func TestCsvToSpreadSheetValuesCollection_headerOnly(t *testing.T) {
 	input :=`"key1","key2","key3"`
-	actual, err := csvToSpreadSheetValuesCollection(input)
-	var expected SpreadSheetValuesCollection
+	actual, err := csvToSpreadsheetValuesCollection(input)
+	var expected SpreadsheetValuesCollection
 	if err != nil {
 		t.Fatalf("This test must not be occurred error. Raw: %s", err)
 	}

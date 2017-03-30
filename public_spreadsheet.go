@@ -12,10 +12,10 @@ type PublicSpreadsheet struct {
 	lineNumberOfHeaders int
 }
 
-type SpreadSheetValues map[string]string
-type SpreadSheetValuesCollection []SpreadSheetValues
+type SpreadsheetValues map[string]string
+type SpreadsheetValuesCollection []SpreadsheetValues
 
-func (x PublicSpreadsheet) query(q string) (SpreadSheetValuesCollection, error) {
+func (x PublicSpreadsheet) query(q string) (SpreadsheetValuesCollection, error) {
 	res, body, errs := gorequest.New().Get(
 		"https://docs.google.com/a/google.com/spreadsheets/d/" +
 		x.key +
@@ -26,16 +26,16 @@ func (x PublicSpreadsheet) query(q string) (SpreadSheetValuesCollection, error) 
 	    End()
 
 	if errs != nil {
-		return make(SpreadSheetValuesCollection, 0), fmt.Errorf("Failed to fetch from public spreadsheet: %s", errs[0])
+		return make(SpreadsheetValuesCollection, 0), fmt.Errorf("Failed to fetch from public spreadsheet: %s", errs[0])
 	}
 
 	if res.StatusCode >= 400 {
-		return make(SpreadSheetValuesCollection, 0), fmt.Errorf("Returned status code is %d", res.StatusCode)
+		return make(SpreadsheetValuesCollection, 0), fmt.Errorf("Returned status code is %d", res.StatusCode)
 	}
-	collection, err := csvToSpreadSheetValuesCollection(body)
+	collection, err := csvToSpreadsheetValuesCollection(body)
 
 	if err != nil {
-		return make(SpreadSheetValuesCollection, 0), err
+		return make(SpreadsheetValuesCollection, 0), err
 	}
 	return collection, nil
 }
