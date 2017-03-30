@@ -12,10 +12,18 @@ type PublicSpreadsheet struct {
 	lineNumberOfHeaders int
 }
 
+func NewPublicSpreadsheet(key string, gid int, lineNumberOfHeaders int)  *PublicSpreadsheet {
+	return &PublicSpreadsheet{
+		key: key,
+		gid: gid,
+		lineNumberOfHeaders: lineNumberOfHeaders,
+	}
+}
+
 type SpreadsheetValues map[string]string
 type SpreadsheetValuesCollection []SpreadsheetValues
 
-func (x PublicSpreadsheet) query(q string) (SpreadsheetValuesCollection, error) {
+func (x PublicSpreadsheet) Query(q string) (SpreadsheetValuesCollection, error) {
 	res, body, errs := gorequest.New().Get(
 		"https://docs.google.com/a/google.com/spreadsheets/d/" +
 		x.key +

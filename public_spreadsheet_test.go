@@ -11,7 +11,7 @@ func TestPublicSpreadsheetQuery_gid0_1object(t *testing.T) {
 		0,
 		1,
 	}
-	actual, err := spreadsheet.query(`SELECT A,B,C WHERE C = "spreadsheet-sql-public001@example.com"`)
+	actual, err := spreadsheet.Query(`SELECT A,B,C WHERE C = "spreadsheet-sql-public001@example.com"`)
 	var expected SpreadsheetValuesCollection
 	expected = append(expected, SpreadsheetValues{
 		"name": "spreadsheet-sql-public001",
