@@ -22,3 +22,15 @@ func TestCsvToSpreadSheetValuesCollection_validCsv(t *testing.T) {
 		t.Error("%#v != %#v", actual, expected)
 	}
 }
+
+func TestCsvToSpreadSheetValuesCollection_headerOnly(t *testing.T) {
+	input :=`"key1","key2","key3"`
+	actual, err := csvToSpreadSheetValuesCollection(input)
+	var expected SpreadSheetValuesCollection
+	if err != nil {
+		t.Fatalf("This test must not be occurred error. Raw: %s", err)
+	}
+	if !reflect.DeepEqual(actual, expected) {
+		t.Error("%#v != %#v", actual, expected)
+	}
+}
