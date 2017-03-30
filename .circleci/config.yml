@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    working_directory: /go/src/github.com/JumpeiArashi/black-voice
+    docker:
+      - image: golang:1.8.0
+    environment:
+      GOPATH: /go
+    steps:
+      - run: mkdir -p /go/{src,pkg,bin}
+      - run: go get -u github.com/Masterminds/glide
+      - checkout
+      - run: glide install
+      - run: go test -v -race
